@@ -2,10 +2,15 @@
 	"name": "googletaskapi",
 	"version": "1.0.0",
 	"description": "simple REST to support the mobile app",
-	"main": "application.js",
+	"main": "app.js",
 	"scripts": {
 		"lint": "eslint app.js",
-		"start": "nodemon application.js --exec babel-node --presets es2015,stage-2"
+		"start": "node ./bin/app.js",
+		"start-dev": "nodemon ./server/app.js --exec babel-node --presets es2015,stage-2",
+		"build-server": "babel --presets es2015,stage-2 -d ./bin ./server -d",
+		"build": "npm run clean && npm run build-server",
+		"start": "node ./bin/app.js",
+		"clean": "rm -rf bin && mkdir bin"
 	},
 	"repository": {
 		"type": "git",
